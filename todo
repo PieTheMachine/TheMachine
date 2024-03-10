@@ -1,0 +1,9 @@
+.protact config.js to .env
+
+. sing up user alrady exist
+
+
+. renove 0.0.0.0/0 form mongo db because it means than every ip can axess it
+
+FIXED:
+. use effect tiwce insted of one proplem 
