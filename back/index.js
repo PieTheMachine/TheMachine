@@ -19,7 +19,7 @@ app.use(cors({
 app.use(cookieParser());//check if the request has cookies and allowes you to read them
 
 app.get('/',(req,res)=>{
-    return res.send("wow, how did you get here?");
+    return res.send("wow, how did you get here TEst?");
 });
 
 app.use('/users',users_routs);
