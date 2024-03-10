@@ -1,5 +1,4 @@
 import Express from "express";
-import { PORT,mongoDB } from "./config.js";
 import mongoose from "mongoose";
 import cors from 'cors';
 import cookieParser from "cookie-parser";
@@ -26,13 +25,13 @@ app.use('/timeblock',timeblock);
 app.use('/exercises',exercises);
 //db
 mongoose
-    .connect(mongoDB)
+    .connect(process.env.MongoDB)
     .then(() => {
         //if conected to db
         console.log("connected");
         //add local port
-        app.listen(PORT, () => {
-            console.log(`g: ${PORT}`);
+        app.listen(process.env.PORT, () => {
+            console.log(`g: ${process.env.PORT}`);
         });
     })
     .catch((error) =>{
