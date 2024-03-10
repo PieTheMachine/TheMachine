@@ -13,11 +13,16 @@ import auth from "../Mid/auth.js"
 const router = Express.Router();
 
 //get data of loged in user
-router.get('/allusers',auth, async (requst,response)=>{
+router.get('/allusers', async (requst,response)=>{
     const allusers = await User.find({}); //get all users
-    response.json({
-        allusers
-    });
+    if(allusers){
+        response.json({
+            allusers
+        });
+    }else{
+        response.send("notfound")
+    }
+    
 });
 //get all users only if loged in(it will run function auth then the next function witch is async bla bla)
 router.get('/userdata', auth, async (requst,response)=>{
@@ -122,7 +127,7 @@ router.post('/', async (requst,response)=>{
 
     }catch(error){
         console.log(error.message);
-        response.status(500).send({message: error.message});
+        response.status(500).send("GG"+{message: error.message});
     }
 });
 

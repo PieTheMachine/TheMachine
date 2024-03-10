@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 import '../root.css';
@@ -13,10 +13,10 @@ function Navbar(){
     const [name,setname] = useState("");
     const [id,setid] = useState("");
     const [loged,setloged] = useState(false);
-    useEffect(()=>{
+    const timeout =5000;
+    setTimeout(() => {
         GetuserData();
-    },[])
-  
+    }, timeout);
     async function GetuserData(){
     
         const server = import.meta.env.VITE_server+"/users/userdata";
