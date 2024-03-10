@@ -13,7 +13,7 @@ function Navbar(){
     const [name,setname] = useState("");
     const [id,setid] = useState("");
     const [loged,setloged] = useState(false);
-    const timeout =5000;
+    const timeout =1000;
     setTimeout(() => {
         GetuserData();
     }, timeout);
@@ -23,11 +23,13 @@ function Navbar(){
     
         const res = await axios.get(server,{withCredentials:true});
         const data = res.data["userdata"];
-        if(res){
+        if(data){
             //userdata is the name of the array inside the response json object
             setloged(true);
             setname(data["name"]);
             setid(data["id"]);
+        }else{
+            setloged(false);
         }
     }
     return(

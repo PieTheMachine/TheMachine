@@ -76,6 +76,7 @@ router.put('/:id', async (requst,response)=>{
 //Login
 router.post('/login', async (requst,response) =>{
     
+    console.log("TEstLogin");
     const{name,psw} = requst.body;
     
     if(!name || !psw){
@@ -133,10 +134,12 @@ router.post('/', async (requst,response)=>{
 
 //logoutout
 router.get('/logout', async (req,res)=>{
+    
+    res
     res.cookie("token","",{
         httpOnly:true,
         expires: new Data(0)
-    }).send();
+    }).send("loged");
 
 });
 

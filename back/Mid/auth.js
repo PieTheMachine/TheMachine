@@ -3,9 +3,15 @@ import {} from 'dotenv/config';
 function auth(req,res,next){
 
     try{
+        console.log("LoginTest");
         const token = req.cookies.token;
-        if(!token) return res.state(401).json({errorMessage:"I dont know you🤚, where is your token?????"});
+        if(!token){
+            console.log("error on token")
+             return res.json({errorMessage:"I dont know you🤚, where is your token?????"});
+        }
+        console.log("LoginTest   token");
 
+        console.log("tokens secreat" + process.env.JWT_Secreat);
 
         const verified = jwt.verify(token,process.env.JWT_Secreat);//jwt.verfy will decode the tokens payload aka data and store it on verfied
         // data saved on const verified console.log(verified);
