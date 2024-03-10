@@ -6,7 +6,7 @@ function Exercise() {
     //important
     const [LoadedUser,setLoadedUser] = useState(false);
 
-    const [MadeList,setMadeList] = useState(false);
+
     //get user
     let Userid ='';
     const [StateId,setStateId] = useState('');
@@ -41,7 +41,7 @@ function Exercise() {
         const data ={
             exName,exCatgory,id,
         }
-        axios.post(server+"/exercises/make",data).then((res)=>{console.log("created"); location.reload();});
+        axios.post(server+"/exercises/make",data).then((res)=>{console.log("created" + res); location.reload();});
     }
 
     //get all exercises for this user
@@ -55,7 +55,7 @@ function Exercise() {
         axios.post(server+"/exercises/user",data)
         .then((res)=>{
             setExData(res.data);
-            setMadeList(true);
+
             GenerateRandomExerciseSession();
         })
     }
@@ -66,8 +66,7 @@ function Exercise() {
     const [StateArrayEx,setStateArrayEx] = useState(['']);
 
     function clearData(){
-        setStateArray(StateArray=>[]);
-        setStateArrayEx(StateArrayEx=>[]);
+
         console.log("Cleard")
     }
 

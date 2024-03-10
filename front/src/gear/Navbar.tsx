@@ -10,8 +10,7 @@ import './navbar.css';
 function Navbar(){
 
     //get data stuff
-    const [name,setname] = useState("");
-    const [id,setid] = useState("");
+
     const [loged,setloged] = useState(false);
     const timeout =1000;
     setTimeout(() => {
@@ -26,8 +25,7 @@ function Navbar(){
         if(data){
             //userdata is the name of the array inside the response json object
             setloged(true);
-            setname(data["name"]);
-            setid(data["id"]);
+            
         }else{
             setloged(false);
         }

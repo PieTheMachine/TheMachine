@@ -13,7 +13,7 @@ const Port =process.env.PORT || process.env.Base_Url;
 const app = Express();
 app.use(Express.json());//check if the request has json data and allowes you to read them
 app.use(cors({
-    origin:"http://localhost:5173",//local how to make it server?
+    origin:"https://dashing-cuchufli-5d668f.netlify.app/",//local how to make it server?
     credentials: true,
 }));
 app.use(cookieParser());//check if the request has cookies and allowes you to read them

@@ -39,7 +39,7 @@ function TimeBlocke() {
         index,title,text,level,id,
       }
       axios.post(import.meta.env.VITE_server+"/timeblock/create",data)
-      .then((res)=>{
+      .then(()=>{
         location.reload();
       })
     }
