@@ -2,7 +2,6 @@ import { useState  } from "react";
 import axios from "axios";
 
 function Login() {
-
   const [name,setname] = useState('');
   const [psw,setpsw] = useState('');
 
