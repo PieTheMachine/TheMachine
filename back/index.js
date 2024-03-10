@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
 app.use('/users',users_routs);
 app.use('/timeblock',timeblock);
 app.use('/exercises',exercises);
-app.use('/test',test );
+app.use('/test',test);
 //db
 mongoose
     .connect(process.env.MongoDB)
