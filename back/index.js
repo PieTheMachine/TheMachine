@@ -29,7 +29,7 @@ mongoose
     .connect(process.env.MongoDB)
     .then(() => {
         //if conected to db
-        console.log("connected");
+        console.log("connected:"+ Port);
         //add local port
         app.listen(Port, () => {
             console.log(`g: ${Port}`);
