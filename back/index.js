@@ -7,7 +7,7 @@ import users_routs from "./routs/users_rout.js"
 import timeblock from "./routs/time_bloke.js"
 import exercises from "./routs/exercises.js"
 
-const Port = process.env.PORT || 5555;
+const Port =process.env.Port || process.env.Base_Url;
 
 const app = Express();
 app.use(Express.json());//check if the request has json data and allowes you to read them
@@ -30,6 +30,7 @@ mongoose
     .then(() => {
         //if conected to db
         console.log("connected to db");
+        console.log("Port:"+Port);
         //add local port
         app.listen(Port, () => {
             console.log(`connected: ${Port}`);
