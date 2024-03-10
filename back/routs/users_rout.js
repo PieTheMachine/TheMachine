@@ -26,7 +26,7 @@ router.get('/allusers', async (requst,response)=>{
 });
 //get all users only if loged in(it will run function auth then the next function witch is async bla bla)
 router.get('/userdata', auth, async (requst,response)=>{
-    
+    console.log("userdata");
     await requst;
     const name = requst.username;
     const id = requst.userid;
