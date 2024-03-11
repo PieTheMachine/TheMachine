@@ -7,12 +7,15 @@ function Login() {
   const [psw,setpsw] = useState('');
 
   function loginF(){
+    console.log("loging...");
     const data ={
       name,psw
     }
+    console.log(data);
     axios.post(import.meta.env.VITE_server+"/users/login",data,{withCredentials:true}).then((res)=>{
-      console.log(res);
-      
+      document.cookie = "user_name=" + name;
+      document.cookie = "user_id=" + res.data["user_id"];
+      document.cookie = "token=" + res.data["Token"];
     })
   }
   return (

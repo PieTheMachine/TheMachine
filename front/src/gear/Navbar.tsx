@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import '../root.css';
 import './navbar.css';
@@ -9,12 +9,20 @@ function Navbar(){
     //get data stuff
 
     const [loged,setloged] = useState(false);
+    const [secounds,setsecounds] = useState(0);
     const timeout =2000;
-    setInterval(() => {
-        if(!loged){
-            CheckifLogedIn();
-        }
-    }, timeout);
+    
+    useEffect(()=>{
+        const Interval = setInterval(()=>{
+            setsecounds((secounds)=> secounds + 1);
+            
+        },timeout)
+        
+        console.log(secounds);
+        console.log("Checking");
+        CheckifLogedIn()
+        return () => clearInterval(Interval);
+    });
     const [user_name,setuser_name] = useState('');
     async function CheckifLogedIn(){
         const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/, "$1");

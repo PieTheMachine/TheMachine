@@ -95,12 +95,7 @@ router.post('/login', async (requst,response) =>{
                 const token = await jwt.sign({user_id:userExist._id,user_name:userExist.name},process.env.JWT_Secreat);
                 // send the token in a HTTP cookie  
                 
-
-                 
-                 response.cookie('user_id',userExist._id);
-                 response.cookie('token',token);
-                 response.cookie('user_name',userExist.name);
-                 response.send("cookies set");
+                 response.json({user_id:userExist._id,Token:token});
                  return;
             }   
             console.log(check);
