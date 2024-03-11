@@ -96,7 +96,12 @@ router.post('/login', async (requst,response) =>{
                 // send the token in a HTTP cookie  
                 
 
-                return response.cookie('token',token).send();
+                 
+                 response.cookie('user_id',userExist._id);
+                 response.cookie('token',token);
+                 response.cookie('user_name',userExist.name);
+                 response.send("cookies set");
+                 return;
             }   
             console.log(check);
             return response.json({Message: "rong psw"});

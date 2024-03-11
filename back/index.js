@@ -12,10 +12,14 @@ const Port =process.env.PORT || process.env.Base_Url;
 
 const app = Express();
 app.use(Express.json());//check if the request has json data and allowes you to read them
-app.use(cors({
-    origin:"https://themachinetest.netlify.app",//local how to make it server?
-    credentials: true,
-}));
+
+
+var corsOptions = {
+    origin: ["https://themachinetest.netlify.app","http://localhost:5173"],
+    optionsSuccessStatus: 200,
+    credentials: true, // For legacy browser support
+    }
+app.use(cors(corsOptions));
 app.use(cookieParser());//check if the request has cookies and allowes you to read them
 
 app.get('/',(req,res)=>{

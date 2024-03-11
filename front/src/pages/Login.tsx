@@ -1,6 +1,7 @@
 import { useState  } from "react";
 import axios from "axios";
 
+
 function Login() {
   const [name,setname] = useState('');
   const [psw,setpsw] = useState('');
@@ -11,10 +12,9 @@ function Login() {
     }
     axios.post(import.meta.env.VITE_server+"/users/login",data,{withCredentials:true}).then((res)=>{
       console.log(res);
-      location.reload();
+      
     })
   }
-
   return (
     <div>
         <h1>🎲Log in</h1>

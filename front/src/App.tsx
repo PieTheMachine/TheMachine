@@ -11,9 +11,10 @@ import Exercise from "./pages/Exercise";
 import Navbar from "./gear/Navbar";
 import Timer from "./gear/Timer";
 
+
+
 import {RouterProvider,createBrowserRouter,Outlet} from 'react-router-dom';
-
-
+/* vars */
 
 const router = createBrowserRouter([
   //used outlet + called warpper to be calld every time and it children will change pased on path
@@ -55,7 +56,10 @@ const router = createBrowserRouter([
   }
 
 ]);
+
+
 function NavbarWarpper(){
+  
   return(
     <div>
       <Navbar/>
