@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser());//check if the request has cookies and allowes you to read them
 
 app.get('/',(req,res)=>{
-    return res.send("wow, how did you get here Test?");
+    return res.send("wow, how did you get here Test 3/20?");
 });
 
 app.use('/users',users_routs);
