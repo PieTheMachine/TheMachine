@@ -23,6 +23,7 @@ router.post("/make", async (req,res)=>{
         const createdExercise = await Exercise.create(newExercise);
         res.json(createdExercise);
     }
+    return;
     
 })
 router.post("/user",async (req,res)=>{
@@ -33,6 +34,6 @@ router.post("/user",async (req,res)=>{
     }else{
         res.send("User got no exercises");
     }
-
+    return;
 })
 export default router;

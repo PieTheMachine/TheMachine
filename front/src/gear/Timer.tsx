@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../root.css';
 import './timer.css';
 
@@ -7,26 +7,35 @@ import alarm from '../assets/alarm.wav';
 
 useState
 function Timer() {
-    let loaded = false;
-
+    const [Loadedd,setLoadedd] = useState(false);
     const audio = new Audio(alarm);
 
-    let TheTime = 5;//the wanted timer = 90 m
-    let TheTimeInSeconds = TheTime * 60;
+    //let TheTime = 1;//the wanted timer = 90 m
+    const [TheTime,setTheTime] = useState(15);
+    //let TheTimeInSeconds = TheTime * 60;
+    const [TheTimeInSeconds,setTheTimeInSeconds] =useState(TheTime * 60);
     let TimerTextElement = document.getElementById('⏳TimerText');
 
-    let PlayPuse = false;
+    const [PlayPuse,setPlayPuse] = useState(false);
 
-    setInterval(CountDown,1000);//calls the function every second
+   // setInterval(CountDown,1000);//calls the function every second
+    useEffect(()=>{
+        const Interval = setInterval(()=>{
+            CountDown();
+        },1000)
+        return () => clearInterval(Interval);
+    })
 
     function CountDown(){
-        if(TimerTextElement){
-        TimerTextElement.innerText = "90m";
-        }
-        if(loaded == true){
+        //for restart
+        setTheTime(15);
+        if(Loadedd === true){
+
             if(PlayPuse){
                 const Minuets = Math.floor(TheTimeInSeconds/60);
-                const Seconds = TheTimeInSeconds%60;
+                const Seconds = TheTimeInSeconds % 60;
+
+
                 let stringSeconds = '';
                 let stringMinuets = '';
                 
@@ -49,41 +58,64 @@ function Timer() {
 
                 
                 if(Seconds<0 && TheTimeInSeconds < 0){
-                    console.log("BREAK!");
+
                     audio.play();
                     if(TimerTextElement){
                         TimerTextElement.innerText = "00:00";
                     }
                     
                 }else{
-                    TheTimeInSeconds--;
+                    
+                    setTheTimeInSeconds(TheTimeInSeconds => TheTimeInSeconds - 1)
                 }
             }
         }
     }
     function Loaded(){
-        loaded = true;
+        
         TimerTextElement = document.getElementById('⏳TimerText');
+        if(TimerTextElement && !Loadedd){
+            
+            setTheTimeInSeconds(TheTime * 60);
+            TimerTextElement.innerText = TheTimeInSeconds.toString();
+        }
+        
+        setLoadedd(true);
         return ;
     }
     function ResetTimer(){
-        TheTimeInSeconds = TheTime * 60;
-        PlayPuse = true;
+        setTheTimeInSeconds(TheTime * 60);
+        
+        setPlayPuse(true);
     }
 
    
     function PlayStope(){
-        PlayPuse = !PlayPuse;
+        setPlayPuse(!PlayPuse);
     }
+    function ClassName(){
+        let HiddenClass = "";
+        if(Show){
+            HiddenClass = "";
+        }else{
+            HiddenClass = "HideInSize";
+        }
+        return "⌛Timer 💪flex 💪C " + HiddenClass;
+    }
+    const [Show,setShow] = useState(false)
     return (
-        <div className='⌛Timer 💪flex 💪C'>
-            <h1  id='⏳TimerText' className='🧊GradientText'>Timer{setTimeout(Loaded,1000)}</h1>
-            <div className='💪flex'>
-                <button onClick={ResetTimer}>Restart</button>
-                 <button onClick={PlayStope}>Puse/Play</button>
-                 
+
+        <div>
+            <div className={ClassName()}>
+                <h1  id='⏳TimerText' className='🧊GradientText'>Timer{setTimeout(Loaded,1000)}</h1>
+                <div className='💪flex'>
+                    <button className='✅submit' onClick={ResetTimer}>Restart</button>
+                    <button className='✅submit' onClick={PlayStope}>Puse/Play</button>
+                </div>
             </div>
+            <button onClick={()=>setShow(!Show)} className='⌛Timer🎈HideShow'><p>⌛</p></button>
         </div>
+        
     )
     
 }

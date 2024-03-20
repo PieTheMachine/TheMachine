@@ -10,6 +10,14 @@ const userSchema = mongoose.Schema(
         psw:{
             type:String,
             required:true,   
+        },
+        Gold:{
+            type:Number,
+            required:false,   
+        },
+        SciFi:{
+            type:Number,
+            required:false,   
         }
     },{
         timestamps:true,

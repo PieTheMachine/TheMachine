@@ -5,5 +5,6 @@
 
 . renove 0.0.0.0/0 form mongo db because it means than every ip can axess it
 
+.Requird data is not checked on front witch crashes the server;
 FIXED:
 . use effect tiwce insted of one proplem 

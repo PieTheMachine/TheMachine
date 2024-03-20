@@ -7,6 +7,9 @@ import ErrorPage from "./pages/ErrorPage";
 import TimeBlocke from "./pages/TimeBlocke";
 import MyBook from "./pages/MyBook";
 import Exercise from "./pages/Exercise";
+
+import Quests from "./pages/Quests";
+import XP from "./pages/XP";
 /*gears*/
 import Navbar from "./gear/Navbar";
 import Timer from "./gear/Timer";
@@ -23,7 +26,7 @@ const router = createBrowserRouter([
     element:<NavbarWarpper/>,//it is a function below
     children:[
       {
-        path:"/home",
+        path:"/",
         element:<Home/>,
       },
       {
@@ -51,6 +54,13 @@ const router = createBrowserRouter([
       },{
         path:'exercise',
         element:<Exercise/>
+      }
+      ,{
+        path:"allquests",
+        element:<Quests/>
+      },{
+        path:"xp",
+        element:<XP/>
       }
     ]
   }

@@ -1,28 +1,39 @@
 import axios from "axios";
 import { useState } from "react";
-function Signup(){
+import "./Log.css"
+import { useNavigate } from "react-router-dom";
 
-    const[name,setname] = useState('');
-    const[psw,setpsw] = useState('');
-    const[pswC,setpswC] = useState('');
+function Signup() {
 
-    const Signupf = ()=>{
-        console.log(import.meta.env.VITE_server+"/users");
-        const data ={
-            name,psw
+    const navigate = useNavigate()
+    const [name, setname] = useState('');
+    const [psw, setpsw] = useState('');
+
+    const Signupf = () => {
+
+        if (name.length > 5 && psw.length > 5) {
+            const data = {
+                name, psw
+            }
+            axios.post(import.meta.env.VITE_server + "/users", data).then((response) => {
+                console.log(response);
+                navigate("/login");
+            })
+        } else {
+            console.log("short");
         }
-        axios.post(import.meta.env.VITE_server+"/users",data).then((response)=>{
-            console.log(response);
-        })
+
     }
 
-    return(
-        <div>
-            <h1>📝Sign up</h1>
-            <input type="text" value={name} placeholder="name" onChange={(e) => setname(e.target.value)}/>
-            <input type="text" value={psw} placeholder="psw" onChange={(e) => setpsw(e.target.value)}/>
-            <input type="text" value={pswC} placeholder="pswC" onChange={(e) => setpswC(e.target.value)}/>
-            <button onClick={Signupf}>sign up</button>
+    return (
+        <div className="💪Flex 💪C">
+            <div className="🪓🍽LogMenu GapCool 💪Flex 💪C">
+                <h1>📝Sign up</h1>
+                <input className="📱TextInput" type="text" minLength={5} value={name} placeholder="name" onChange={(e) => setname(e.target.value)} />
+                <input className="📱TextInput" type="text" minLength={5} value={psw} placeholder="psw" onChange={(e) => setpsw(e.target.value)} />
+                <button className='✅submit' onClick={Signupf}><span>sign up</span></button>
+            </div>
+
         </div>
     )
 }

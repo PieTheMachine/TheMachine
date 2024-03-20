@@ -2,12 +2,21 @@
 :root{
     font-size: 25px;
     
+    --textCooler:rgb(222, 176, 11);
     --text:white;
     --text2:rgb(0, 0, 0);
+    --Hover-Color-Text:rgb(0, 0, 0);
+    --colordarker:rgba(255, 255, 255, 0.5);
 
-    --submit_color:red;
+    --Glow-Color:rgb(0, 123, 255);
+    --Hover-Color:white;
+    
+    --submit_color:rgb(0, 200, 255);
+    --submit_color2:rgb(0, 85, 255);
+    --submit_color3:rgb(68, 0, 255);
 }
 *{
+
     text-decoration: none;
     color: var(--text);
 
@@ -17,13 +26,19 @@
     font-weight: 700;
     font-style: normal;
 
+    text-shadow: 0rem 0rem 0.1rem var(--text);
 
     transition: all 0.2s ease 0s;
+    font-size: 1rem;
 }
-input{
+h1{
+    font-size: 2rem;
+}
+input,option,select{
     color: var(--text2);
 }
 body{
+    overflow-x: hidden;
     margin: 0;
     background: linear-gradient(black, rgb(8, 12, 91));
     background-repeat: no-repeat;
@@ -32,12 +47,55 @@ body{
     width: 100vw;
     
 }
+.z1{
+    z-index: 1;
+}
 .pos_reltive{
     position: relative;
+}
+
+select{
+    max-width: 90%;
+    border-radius: 0.25rem;
+    box-shadow: 0rem 0.06rem rgb(128, 128, 128);
+    border-style: none;
+}
+select:focus{
+    outline: none;
+    
+}
+select:focus{
+    background-color: rgb(208, 208, 208);
+}
+
+select option{
+    background-color: transparent;
+    border-radius: 1rem;
+} 
+.select-body{
+    background-color: red;
+}
+.❌Button{
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    border-radius: 0.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .📺full{
     width: 100%;
     height: 100%;
+}
+.📺FullScreen{
+    width: 100vw;
+    height: 100vh;
 }
 .🎩OnTopCover{
     position: absolute;
@@ -59,17 +117,105 @@ body{
 }
 /*#region links*/
 .💻link:hover h3{
-    text-shadow: 0.1rem 0.1rem 0.2rem rgb(0, 255, 213);
+    color: var(--Hover-Color-Text);
+    text-shadow: 0.0rem 0.0rem 0.2rem var(--Glow-Color);
+}
+.💻link:hover{
+    transform: translate(0,0.2rem);
 }
 /*#endregion links*/
 .💪Flex{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
 }
 .💪C{
     flex-direction: column;
 }
+.💪L{
+    align-items: start;
+    justify-content: start;
+}
 .✅submit{
-    background-color: var(--submit_color);
+    color: var(--text);
+    font-size: 1rem;
+    background: linear-gradient(var(--submit_color),var(--submit_color2));
+    border-style: solid;
+    border-radius: 0.3rem;
+    
+    
+}
+.✅submit:hover{
+    text-shadow: 0 0 0.2rem black;
+    background: linear-gradient(var(--submit_color2),var(--submit_color3));
+}
+.👓iconButtons{
+    background-color: transparent;
+    border-style: none;
+
+    width: 2rem;
+    height: 2rem;
+    font-size: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.⛽FullWidth{
+    width: 100vw;
+}
+
+.🪓🍽LogMenu{
+    background: linear-gradient(rgb(0, 166, 255),rgb(0, 217, 255)) ;
+    border-radius: 0.2rem;
+    width: 90vw;
+    padding: 0.2rem;
+
+    box-shadow: 0 0 0 0.3rem rgba(0, 0, 0, 0.394);
+}
+.🪓🍽LogMenu🍗Part{
+    background: linear-gradient(rgba(0, 89, 137, 0.5),rgba(38, 71, 77, 0.5)) ;
+    border-radius: 0.2rem;
+    width: 90%;
+    padding: 0.2rem;
+}
+.fillwidth{
+    width: 100%;
+    overflow-wrap: break-word;
+    text-align: justify;
+}
+.fillwidth:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+.GapCool{
+    gap: 0.5rem;
+}
+.💾Text{
+    color: var(--text1);
+    background-color: rgb(1, 48, 125);
+    resize: none;
+    border-radius: 0.5rem;
+
+    border-style: none;
+    padding: 0.5rem;
+}
+.💾Text:focus{
+    outline: none;
+}
+.📱TextInput{
+    font-size: 1rem;
+    max-width: 90%;
+    border-radius: 0.25rem;
+}
+  
+@media (max-width:800px) { 
+    *{
+        font-size: 1rem;
+    }
+    .✅submit{
+        font-size: 0.5rem;
+    }
+   
 }

@@ -1,0 +1,63 @@
+.🛹LevelsHolder {
+    padding: 1rem 0;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    width: 100vw;
+    background: linear-gradient(rgb(0, 255, 98,0.2),rgba(0, 217, 255, 0.5));
+
+}
+
+
+.🍁Level {
+    cursor: pointer;
+    text-shadow: 0 1rem rgb(250, 0, 0);
+    width: 70%;
+    aspect-ratio: 16/9;
+    
+}
+
+.🍁Level:hover {
+    box-shadow: 0 0 0.2rem 0.1rem rgb(0, 0, 0);
+}
+
+.🍚ProgressHolder {
+    height: 100%;
+    width: 95%;
+    background-color: var(--colordarker);
+    box-shadow: 0 0 0 0.1rem black;
+    position: relative;
+}
+.🍁Level:hover .🍚ProgressHolder {
+    box-shadow: 0 0 0 0.1rem rgb(255, 255, 255);
+}
+
+
+.🎮TheProgress {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    
+}
+.🍁Level:hover .🎮TheProgress {
+    box-shadow: 0 0.12rem 0rem rgb(0, 0, 0);
+}
+
+.☣Title {
+    width: 100%;
+    text-align: center;
+
+}
+.🍁Level:hover * {
+    text-shadow: 0 0rem 0.1rem rgb(0, 0, 0);
+}
+
+

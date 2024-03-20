@@ -1,8 +1,61 @@
-.Navbar{
+.🍷Navbar{
+    position: relative;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
 }
+.right{
+    display: flex;
+    justify-content: start;
+}
+.👉Sidebar{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10vh;/*same as navbar hight*/
+    left: 0;
+
+    z-index: 10;
+
+    animation: sidenavbar 0.5s ;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.💎LOGO_Hlder{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1vh;
+}
+.💎LOGO{
+    height: 4rem;
+    transform: translate(0,3rem);
+}
+.💎LOGO:hover{
+    cursor: pointer;
+    filter: drop-shadow(0 0 0.2rem var(--Glow-Color));
+}
+@keyframes sidenavbar {
+    0%{
+        opacity: 0;
+        transform: translate(0rem,-10rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0rem,0rem);
+    }
+}
+@media (max-width:800px) { 
+    .💎LOGO{
+        height: 2.5rem;
+        transform: translate(0,1.5rem);
+    }
+}
+

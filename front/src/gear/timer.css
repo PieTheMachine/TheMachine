@@ -1,14 +1,17 @@
+:root{
+    --alarmColor:rgb(15, 168, 179);
+    --alarmColor2: rgb(4, 112, 120);
+}
 .⌛Timer{
     position: fixed;
-    right: 0;
-    bottom: 0;
+    bottom: 0.5rem;
+    right: 0.5rem;
 
     padding: 0.3rem;
 
-    background-color: orange;
+    background: linear-gradient(var(--alarmColor),var(--alarmColor2));
 
     
-
     z-index: 10;
 
     border-radius: 0.4rem;
@@ -20,4 +23,42 @@
     align-items: center;
     justify-content: center;
 
+}
+
+
+
+
+.⌛Timer🎈HideShow{
+    position: fixed;
+    z-index: 11;
+
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    height: 2rem;
+    width: 2rem;
+
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(var(--alarmColor),var(--alarmColor2));
+
+    border-radius: 0.4rem;
+}
+.⌛Timer🎈HideShow p{
+    
+    font-size: 1.1rem;
+    
+}
+
+
+
+.HideInSize{
+   
+    transform: scale(0.1%) ;
+    bottom: -10%;
+    right: -30%;
 }

@@ -1,0 +1,9 @@
+.🎱MyPoints{
+    gap: 1rem;
+    cursor: default;
+}
+.📃LinksList{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}

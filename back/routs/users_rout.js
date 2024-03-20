@@ -62,10 +62,15 @@ router.delete('/:id',async (requst,response)=>{
 });
 
 // update a user
-router.put('/:id', async (requst,response)=>{
-    const {id} = requst.params;
+router.post('/update', async (requst,response)=>{
+
+    const {id,Gold,SciFi} = requst.body;
+    const data ={
+        Gold:Gold,
+        SciFi:SciFi
+    }
     //requst.body == the data that we got from the requst witch is like $_POST and body is the data it self
-    const result = await User.findByIdAndUpdate(id,requst.body);
+    const result = await User.findByIdAndUpdate(id,data);
     if(!result){
         return response.status(404).json({message:"no user found with that id"});
     }
@@ -88,14 +93,30 @@ router.post('/login', async (requst,response) =>{
             //check psw
             const check = await bcrypt.compare(psw,userExist.psw);
             if(check){
-
                 //token think of it as a token or medel thet tells the server hey I am me
                 //sign the token
-               
                 const token = await jwt.sign({user_id:userExist._id,user_name:userExist.name},process.env.JWT_Secreat);
-                // send the token in a HTTP cookie  
                 
-                 response.json({user_id:userExist._id,Token:token});
+                //Set gold to 0 if undefinde
+                
+                if(userExist.Gold === undefined || userExist.SciFi === undefined){
+                    //update 
+                    const data ={
+                        Gold:0,
+                        SciFi:0,
+                    }
+                    const result = await User.findOneAndUpdate({name:name},data);
+                }
+                
+                
+                //send the token in a HTTP cookie  
+                const resData ={
+                    user_id:userExist._id,
+                    Token:token,
+                    Gold:userExist.Gold,
+                    SciFi:userExist.SciFi,
+                }
+                 response.json(resData);
                  return;
             }   
             console.log(check);
@@ -120,11 +141,19 @@ router.post('/', async (requst,response)=>{
         const newUser = {
             name:requst.body.name,
             psw:hashedpsw,
+            Gold:15,
+            SciFi:1,
         };
-
-
-        const user = await User.create(newUser);
-        return response.status(201).send(user);
+        //check if exist
+        const userExist = await User.findOne({name:name});
+        if(userExist){
+            return response.send("userExist");
+        }else{
+            //create
+            const user = await User.create(newUser);
+            return response.status(201).send(user);
+        }
+        
 
     }catch(error){
         console.log(error.message);
